@@ -5,8 +5,11 @@ import { useAppDispatch, useAppSelector, useInterval } from "@/app/hook";
 
 import Clock from "@/features/clock/Clock";
 import Counter from "@/features/counter/Counter";
+import Items from "@/features/item/Item";
 
 import { selectClock, serverRenderClock, startClock } from "@/features/clock/clockSlice";
+
+import { ChakraProvider } from "@chakra-ui/react";
 
 import styles from "@/styles/Home.module.css";
 
@@ -22,6 +25,9 @@ const Home: NextPage = () => {
 		<div className={styles.container}>
 			<Counter />
 			<Clock lastUpdate={lastUpdate} light={light} />
+			<ChakraProvider>
+				<Items />
+			</ChakraProvider>
 		</div>
 	);
 };
