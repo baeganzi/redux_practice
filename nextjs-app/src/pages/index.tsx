@@ -3,7 +3,9 @@ import type { NextPage } from "next";
 import { wrapper } from "@/app/store";
 import { useAppDispatch, useAppSelector, useInterval } from "@/app/hook";
 import { getItems, selectItem } from "@/features/item/itemSlice";
-import { ItemCard } from "@/features/item/itemCard";
+import { ItemGrid } from "@/features/item/ItemGrid";
+import { ItemCard } from "@/features/item/ItemCard";
+import { mapItem } from "@/entities/item";
 import { Box } from "@chakra-ui/react";
 
 import Clock from "@/features/clock/Clock";
@@ -29,10 +31,13 @@ const Home: NextPage = () => {
 		// 	</ChakraProvider>
 		// </div>
 		<>
-			{itemList?.map((item) => (
-				<ItemCard key={item.itemId} item={item} />
-			))}
-			<Box>a</Box>
+			<Box maxW="7xl" mx="auto" px={{ base: "4", md: "8", lg: "12" }} py={{ base: "6", md: "8", lg: "12" }}>
+				<ItemGrid>
+					{itemList?.map(mapItem).map((item) => (
+						<ItemCard key={item.itemId} item={item} />
+					))}
+				</ItemGrid>
+			</Box>
 		</>
 	);
 };
