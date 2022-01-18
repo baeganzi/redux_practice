@@ -2,16 +2,14 @@ import type { NextPage } from "next";
 
 import { wrapper } from "@/app/store";
 import { useAppDispatch, useAppSelector, useInterval } from "@/app/hook";
+import { getItems, selectItem } from "@/features/item/itemSlice";
+import { ItemCard } from "@/features/item/itemCard";
+import { Box } from "@chakra-ui/react";
 
 import Clock from "@/features/clock/Clock";
 import Counter from "@/features/counter/Counter";
-import { getItems, selectItem } from "@/features/item/itemSlice";
 
 import { selectClock, serverRenderClock, startClock } from "@/features/clock/clockSlice";
-import { ChakraProvider } from "@chakra-ui/react";
-
-import styles from "@/styles/Home.module.css";
-import { ItemCard } from "@/features/item/itemCard";
 
 const Home: NextPage = () => {
 	const dispatch = useAppDispatch();
@@ -34,6 +32,7 @@ const Home: NextPage = () => {
 			{itemList?.map((item) => (
 				<ItemCard key={item.itemId} item={item} />
 			))}
+			<Box>a</Box>
 		</>
 	);
 };
